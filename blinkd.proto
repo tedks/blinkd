@@ -1,0 +1,4 @@
+// state encapsulates the state of the blink(1) and maps directly to the API.
+message state {
+  
+}
