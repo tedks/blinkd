@@ -1,4 +1,45 @@
+syntax = "proto2";
+
+package blinkd;
+
+import "google.duration";
+
 // state encapsulates the state of the blink(1) and maps directly to the API.
 message state {
-  
+  // (R)gb value, 0-255
+  optional int32 red = 1;
+
+  // r(G)b value, 0-255
+  optional int32 green = 2;
+
+  // rg(B) value, 0-255
+  optional int32 blue = 3;
+
+  // "normal" value, 0-255
+  optional int32 normal = 4;
+
+  // duration to fade into the state
+  optional Duration fade = 5;
+
+  // duration to hold the state before reverting to any previous state
+  optional Duration for = 6;
+}
+
+message pattern {
+  // how many times to repeat the pattern
+  optional int64 repeat = 1;
+
+  // delay between repeats
+  optional Duration delay = 2;
+
+  // states composing the pattern
+  repeated state state = 3;
+}
+
+message current_state {
+  // current device state
+  optional state state = 1;
+
+  // default fade duration
+  optional Duration default_fade = 2;
 }
