@@ -1,0 +1,6 @@
+package blinkd
+
+import (
+	"testing"
+)
+
